@@ -15,3 +15,6 @@ class Modulator:
     def am_modulate(self,signal,time):
         carrier=np.sin(2*np.pi*self.carrier_frequency*time)
         return (1+signal)*carrier
+    def fm_modulate(self,signal,time,modulation_index=1.0):
+        phase=2*np.pi*self.carrier_frequency*time+modulation_index*signal
+        return np.sin(phase)
