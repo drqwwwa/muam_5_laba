@@ -31,3 +31,7 @@ class Visualizer:
     def add_noise(self,signal,noise_level=0.1):
         noise=np.random.normal(0,noise_level,len(signal))
         return signal+noise
+    def save_plot(self,time,signal,filename="signal.png"):
+        plt.plot(time,signal)
+        plt.savefig(filename)
+        plt.close()
