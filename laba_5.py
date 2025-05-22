@@ -35,3 +35,18 @@ class Visualizer:
         plt.plot(time,signal)
         plt.savefig(filename)
         plt.close()
+time=np.linspace(0,1,1000)
+signal_freq=5
+carrier_freq=50
+
+generator=SignalGenerator(signal_freq)
+signal=generator.generate(time)
+
+modulator=Modulator(carrier_freq)
+am_signal=modulator.am_modulate(signal,time)
+fm_signal=modulator.fm_modulate(signal,time)
+
+visualizer=Visualizer()
+visualizer.plot_signal(time,signal,"Original Signal")
+visualizer.plot_signal(time,am_signal,"AM Signal")
+visualizer.plot_signal(time,fm_signal,"FM Signal")
